@@ -1,5 +1,7 @@
 package ir.ac.kntu.pages;
 
+import ir.ac.kntu.util.ExitAppException;
+
 public class Exit extends Page {
 
     public Exit() {
@@ -9,6 +11,6 @@ public class Exit extends Page {
     @Override
     public void show() throws Exception {
         System.out.println("Closing the application ...");
-        throw new Exception("EXIT");
+        throw new ExitAppException();
     }
 }

@@ -397,22 +397,15 @@ public class ManageUsers extends Page {
         String pw = View.getStringInput("Password (>=8): ");
         String fn = View.getStringInput("First name: ").trim();
         String ln = View.getStringInput("Last name: ").trim();
-        int rk = View.getInt("Rank (0 strongest): ");
+
+        // Hierarchy rule: the creator becomes the parent.
+        // This prevents accidental rank misuse and fixes "block ancestor" edge cases.
 
         if (fn.isEmpty() || ln.isEmpty() || pw.length() < 8) {
             System.out.println(View.BRIGHT_YELLOW + "Bad input" + View.RESET);
             return;
         }
-        if (rk < 0) {
-            System.out.println(View.BRIGHT_YELLOW + "Invalid rank" + View.RESET);
-            return;
-        }
-        if (rk <= this.manager.getRank()) {
-            System.out.println(View.BRIGHT_YELLOW + "Cannot create same/stronger manager" + View.RESET);
-            return;
-        }
-
-        Manager m = new Manager(fn, ln, pw, un, rk);
+        Manager m = new Manager(fn, ln, pw, un, this.manager);
         pageManager.getUserManager().addManager(m);
         System.out.println(View.BRIGHT_GREEN + "Manager created." + View.RESET);
     }

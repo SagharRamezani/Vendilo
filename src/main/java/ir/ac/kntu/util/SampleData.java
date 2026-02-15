@@ -46,9 +46,12 @@ public final class SampleData {
         list.add(new Supporter("Zahra", "Moradi", "zahra_sup", P3, SupportSection.QUALITY));
 
         // managers (rank: lower = stronger, 0 = root)
-        list.add(new Manager("Mina", "Ahmadi", "admin", P4, 0));
-        list.add(new Manager("Kaveh", "Jafari", "mgr_kaveh", P3, 1));
-        list.add(new Manager("Dorsa", "Hosseini", "mgr_dorsa", P2, 2));
+        Manager root = new Manager("Mina", "Ahmadi", P4, "mina_admin", 0);
+        Manager m1 = new Manager("Kaveh", "Jafari", P3, "mgr_kaveh", root);
+        Manager m2 = new Manager("Dorsa", "Hosseini", P2, "mgr_dorsa", m1);
+        list.add(root);
+        list.add(m1);
+        list.add(m2);
 
         return list;
     }
@@ -70,7 +73,7 @@ public final class SampleData {
                 BookGenre.SCIENCE, AgeCategory.YoungAdult, "9780262035613"));
         ps.add(new Book("Pride and Prejudice", 180000, "Jane Austen", 279,
                 BookGenre.CLASSIC, AgeCategory.YoungAdult, "9780141439518"));
-        ps.add(new Book("The Little Prince", 150000, "Antoine de Saint-Exupéry", 96,
+        ps.add(new Book("The Little Prince", 150000, "Antoine de Saint-Exupery", 96,
                 BookGenre.CHILDREN, AgeCategory.MiddleGrade, "9780156012195"));
         ps.add(new Book("The Great Gatsby", 200000, "F. Scott Fitzgerald", 180,
                 BookGenre.CLASSIC, AgeCategory.YoungAdult, "9780743273565"));

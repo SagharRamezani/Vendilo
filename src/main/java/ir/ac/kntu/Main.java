@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             UserManager userManager = new UserManager();
-            userManager.addManager(new Manager("Saghar", "Ramezani", "P@ss0123", "Saghar_RMZ", -1)); // GodFather
+            userManager.addManager(new Manager("Saghar", "Ramezani", "P@ss0123", "Saghar_RMZ", 0)); // GodFather
             userManager.addSupporter(new Supporter("Nahal", "Ramezani", "NahalR", "P@ssword456", SupportSection.ORDER));
             userManager.addSupporter(new Supporter("Soroush", "Khatibi", "SorenKh", "$Ecure789", SupportSection.ORDER));
             userManager.addSupporter(new Supporter("Toktam", "Khatibi", "TKH57", "Tkh&1357", SupportSection.QUALITY));

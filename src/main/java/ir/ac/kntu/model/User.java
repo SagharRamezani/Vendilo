@@ -1,6 +1,7 @@
 package ir.ac.kntu.model;
 
 import ir.ac.kntu.Verify;
+import ir.ac.kntu.util.PasswordHasher;
 
 public class User {
     private String firstName;
@@ -56,7 +57,7 @@ public class User {
 
     public void setPassword(String password) throws Exception {
         Verify.verifyPassword(password);
-        this.password = password;
+        this.password = PasswordHasher.hash(password);
     }
 
     public String getFirstName() {

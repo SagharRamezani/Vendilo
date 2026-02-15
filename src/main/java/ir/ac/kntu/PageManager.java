@@ -2,6 +2,7 @@ package ir.ac.kntu;
 
 import ir.ac.kntu.model.*;
 import ir.ac.kntu.pages.*;
+import ir.ac.kntu.util.ExitAppException;
 
 import java.util.Stack;
 
@@ -23,10 +24,9 @@ public class PageManager {
             try {
                 this.userManager.autoReplyOldTickets();
                 this.currentPage.show();
+            } catch (ExitAppException e) {
+                break;
             } catch (Exception e) {
-                if ("EXIT".equals(e.getMessage())) {
-                    break;
-                }
                 System.out.println(e.getMessage());
                 try {
                     View.getStringInput("Press Enter...");
