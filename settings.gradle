@@ -1,2 +1,2 @@
-rootProject.name = 'template'
-
+rootProject.name = 'marketplace-suite'
+include 'core', 'cli', 'api-spring', 'desktop-javafx'
